@@ -32,20 +32,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 先 setup Node
+      # 先安装 Node，不用 cache
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: 'pnpm'  # ✅ 注意这里改成 pnpm
 
-      # 再安装 pnpm
+      # 然后安装 pnpm
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
 
       # 安装依赖
       - name: Install dependencies
@@ -54,6 +50,10 @@ jobs:
       # 构建 VitePress
       - name: Build with VitePress
         run: pnpm docs:build
+
+      # 配置 Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       # 上传 artifact
       - name: Upload artifact
