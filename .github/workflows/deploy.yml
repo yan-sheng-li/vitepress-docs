@@ -24,43 +24,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # 构建工作
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - uses: pnpm/action-setup@v4 # 如果使用 pnpm，请取消此区域注释
-        with:
-          version: 9
-      # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
+          fetch-depth: 0
+
+      # 先 setup Node
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: npm # 或 pnpm / yarn
+          cache: 'pnpm'  # ✅ 注意这里改成 pnpm
+
+      # 再安装 pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      # 安装依赖
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      # 构建 VitePress
       - name: Build with VitePress
-        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: pnpm docs:build
+
+      # 上传 artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
-
-  # 部署工作
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
