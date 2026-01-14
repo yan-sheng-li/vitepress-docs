@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/notebook/',
+  base: '/vitepress-docs/',
   lang: 'zh-CN',
   title: "木子空间",
   description: "A VitePress Site",
