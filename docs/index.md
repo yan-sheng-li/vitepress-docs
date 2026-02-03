@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "木子空间"
+  name: "木子空间-文档集"
   text: "A VitePress Site"
   tagline: My great project tagline
   actions:
