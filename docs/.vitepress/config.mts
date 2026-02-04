@@ -12,6 +12,9 @@ export default defineConfig({
     footer: {
       copyright: 'Copyright © 2019-present 木子空间'
     },
+    search: {
+      provider: 'local'
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
