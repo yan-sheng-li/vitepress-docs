@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/vitepress-docs/',
+  base: '/docs/',
   lang: 'zh-CN',
   title: "木子空间",
   description: "A VitePress Site",
@@ -18,9 +18,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: '关于我', link: 'https://www.liyansheng.top' },
-      { text: 'vue', link: 'vue' }
+      { text: '服务大厅', link: 'https://liyansheng.top/pc/home' },
     ],
 
     sidebar: {
@@ -32,20 +30,11 @@ export default defineConfig({
           ]
         }
       ],
-      '/': [
-        {
-          text: 'Examples',
-          items: [
-            { text: 'Markdown Examples', link: '/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/api-examples' }
-          ]
-        }
-      ]
     },
 
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/yan-sheng-li' },
     ]
   }
 })

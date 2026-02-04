@@ -4,22 +4,22 @@ layout: home
 
 hero:
   name: "木子空间-文档集"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  # text: "A VitePress Site"
+  # tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 服务大厅
+      link: https://liyansheng.top/pc/home
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Vue
+      link: /vue
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# features:
+#   - title: Feature A
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature B
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+#   - title: Feature C
+#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
