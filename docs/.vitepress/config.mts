@@ -30,6 +30,14 @@ export default defineConfig({
           ]
         }
       ],
+      '/docker/': [
+        {
+          text: 'Docker 系列',
+          items: [
+            { text: '前后端一键docker启动', link: '/docker/前后端一键docker启动' },
+          ]
+        }
+      ],
     },
 
 

@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Vue
       link: /vue
+    - theme: alt
+      text: Docker
+      link: /docker
 
 # features:
 #   - title: Feature A
