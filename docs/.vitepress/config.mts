@@ -34,7 +34,11 @@ export default defineConfig({
         {
           text: 'Docker 系列',
           items: [
+            { text: 'Docker容器系列', link: '/docker/' },
+            { text: '常用命令清单', link: '/docker/常用命令清单' },
+            { text: '镜像加速', link: '/docker/镜像加速' },
             { text: '前后端一键docker启动', link: '/docker/前后端一键docker启动' },
+            { text: 'WSL2安装', link: '/docker/WSL2安装' }
           ]
         }
       ],
