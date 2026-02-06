@@ -19,6 +19,14 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: '服务大厅', link: 'https://liyansheng.top/pc/home' },
+      {
+        text: '前端',
+        items: [
+          { text: 'Vue', link: '/vue/' },
+          { text: '微信小程序', link: '/微信小程序/' },
+          { text: 'CSS', link: '/css/' },
+        ]
+      }
     ],
 
     sidebar: {
@@ -42,21 +50,6 @@ export default defineConfig({
           ]
         }
       ],
-      /**
-       *       '/微信小程序/': [
-        {
-          title: '微信小程序',
-          collapsable: false,
-          children: [
-            '微信登录',
-            '选择位置',
-            '请求发起封装',
-            'picker选择器',
-            '常用API汇总'
-          ]
-        },
-      ],
-       */
       '/微信小程序/': [
         {
           text: '微信小程序系列',
@@ -66,6 +59,23 @@ export default defineConfig({
             { text: '请求发起封装', link: '/微信小程序/请求发起封装' },
             { text: 'picker选择器', link: '/微信小程序/picker选择器' },
             { text: '常用API汇总', link: '/微信小程序/常用API汇总' },
+          ]
+        }
+      ],
+      '/css/': [
+        {
+          text: 'CSS',
+          items: [
+            { text: 'Bulma', link: '/css/Bulma' },
+            { text: 'TailwindCSS', link: '/css/tailwindcss' }
+          ]
+        }
+      ],
+      '/elastic-search/': [
+        {
+          text: 'ElasticSearch',
+          items: [
+            { text: '快速入门与部署', link: '/elastic-search/快速入门与部署' }
           ]
         }
       ],
