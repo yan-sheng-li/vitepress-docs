@@ -1,0 +1,1 @@
+import{_ as e,c as r,o as t,aj as l}from"./chunks/framework.VtnL2jmu.js";const d=JSON.parse('{"title":"Bulma","description":"","frontmatter":{},"headers":[],"relativePath":"css/Bulma.md","filePath":"css/Bulma.md"}'),s={name:"css/Bulma.md"};function n(o,a,i,m,c,h){return t(),r("div",null,[...a[0]||(a[0]=[l("",5)])])}const p=e(s,[["render",n]]);export{d as __pageData,p as default};
