@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/vitepress-docs/',
   lang: 'zh-CN',
+  ignoreDeadLinks: true,
   title: "木子空间",
   description: "A VitePress Site",
   themeConfig: {
