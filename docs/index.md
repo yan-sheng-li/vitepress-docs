@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Docker
       link: /docker
+    - theme: alt
+      text: 微信小程序
+      link: /微信小程序
 
 # features:
 #   - title: Feature A

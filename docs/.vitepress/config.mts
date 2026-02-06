@@ -38,6 +38,33 @@ export default defineConfig({
           ]
         }
       ],
+      /**
+       *       '/微信小程序/': [
+        {
+          title: '微信小程序',
+          collapsable: false,
+          children: [
+            '微信登录',
+            '选择位置',
+            '请求发起封装',
+            'picker选择器',
+            '常用API汇总'
+          ]
+        },
+      ],
+       */
+      '/微信小程序/': [
+        {
+          text: '微信小程序系列',
+          items: [
+            { text: '微信登录', link: '/微信小程序/微信登录' },
+            { text: '选择位置', link: '/微信小程序/选择位置' },
+            { text: '请求发起封装', link: '/微信小程序/请求发起封装' },
+            { text: 'picker选择器', link: '/微信小程序/picker选择器' },
+            { text: '常用API汇总', link: '/微信小程序/常用API汇总' },
+          ]
+        }
+      ],
     },
 
 
