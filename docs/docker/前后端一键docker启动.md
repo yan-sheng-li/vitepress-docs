@@ -35,7 +35,7 @@ services:
       - mysql
     working_dir: /app
     volumes:
-      - ./backend/target/SyncroTeam-1.0-SNAPSHOT.jar:/app/app.jar
+      - ./backend/target/项目名称.jar:/app/app.jar
     command: java -jar -Dspring.profiles.active=docker /app/app.jar
     ports:
       - "9092:9092"
