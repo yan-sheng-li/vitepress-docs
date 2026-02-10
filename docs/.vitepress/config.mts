@@ -47,7 +47,8 @@ export default defineConfig({
             { text: '常用命令清单', link: '/docker/常用命令清单' },
             { text: '镜像加速', link: '/docker/镜像加速' },
             { text: '前后端一键docker启动', link: '/docker/前后端一键docker启动' },
-            { text: 'WSL2安装', link: '/docker/WSL2安装' }
+            { text: 'WSL2安装', link: '/docker/WSL2安装' },
+            { text: 'docker-compose常用命令', link: '/docker/docker-compose常用命令' },
           ]
         }
       ],
