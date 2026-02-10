@@ -10,9 +10,8 @@
 version: '3.9'
 
 services:
-
   mysql:
-    image: mysql:8.0
+    image: mysql:8.0.39
     container_name: mysql
     restart: always
     environment:
@@ -29,24 +28,31 @@ services:
       - mysql_data:/var/lib/mysql
 
   backend:
-    build: ./backend
+    image: eclipse-temurin:17-jre-ubi10-minimal
     container_name: backend
     restart: always
     depends_on:
       - mysql
+    working_dir: /app
+    volumes:
+      - ./backend/target/SyncroTeam-1.0-SNAPSHOT.jar:/app/app.jar
+    command: java -jar -Dspring.profiles.active=docker /app/app.jar
     ports:
       - "9092:9092"
 
   frontend:
-    build: ./frontend
+    image: nginx:trixie-perl
     container_name: frontend
     restart: always
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - backend
   mysql_backup:
-    image: alpine:3.19
+    image: alpine:3.19.6
     container_name: mysql_backup
     restart: always
     depends_on:
@@ -66,63 +72,6 @@ services:
 
 volumes:
   mysql_data:
-
-```
-
-## 后端dockerfile
-
-```dockerfile
-# ========= 1. build 阶段 =========
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
-WORKDIR /app
-
-# 1️⃣ 先拷贝 pom，利用 Docker 缓存
-COPY pom.xml .
-RUN mvn -B dependency:go-offline
-
-# 2️⃣ 再拷贝源码并构建
-COPY src ./src
-RUN mvn -B package -DskipTests
-
-
-# ========= 2. run 阶段 =========
-FROM eclipse-temurin:17-ubi9-minimal
-WORKDIR /app
-
-COPY --from=builder /app/target/*.jar app.jar
-
-EXPOSE 9092
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=docker", "app.jar"]
-```
-
-## 前端dockerfile
-
-```dockerfile
-# ========= 1. build 阶段 =========
-FROM node:18-alpine AS builder
-WORKDIR /app
-
-# 先拷贝依赖描述，利用缓存
-COPY .npmrc .npmrc
-COPY package*.json ./
-RUN npm install
-
-# 再拷贝源码并打包
-COPY . .
-RUN npm run build
-
-
-# ========= 2. run 阶段 =========
-FROM nginx:1.25-alpine
-
-# 拷贝你自己的 nginx 配置
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# 从 build 阶段拷贝 dist
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
 ```
 
 ## docker目录
