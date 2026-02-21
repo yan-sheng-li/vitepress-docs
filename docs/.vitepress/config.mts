@@ -28,7 +28,13 @@ export default defineConfig({
           { text: 'CSS', link: '/css/' },
         ]
       },
-      { text: 'SpringBoot', link: '/springboot/' }
+      {
+        text: '后端',
+        items: [
+          { text: 'SpringBoot', link: '/springboot/' },
+          { text: 'ElasticSearch', link: '/elastic-search/' },
+        ]
+      }
     ],
 
     sidebar: {

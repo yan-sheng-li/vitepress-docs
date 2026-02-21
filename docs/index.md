@@ -10,15 +10,9 @@ hero:
     - theme: brand
       text: 服务大厅
       link: https://liyansheng.top/pc/home
-    - theme: alt
-      text: Vue
-      link: /vue
-    - theme: alt
-      text: Docker
-      link: /docker
-    - theme: alt
-      text: 微信小程序
-      link: /微信小程序
+    # - theme: alt
+    #   text: Vue
+    #   link: /vue
 
 # features:
 #   - title: Feature A
