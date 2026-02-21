@@ -1,0 +1,1 @@
+import{_ as i,c as s,o as e,aj as t}from"./chunks/framework.VtnL2jmu.js";const c=JSON.parse('{"title":"常见问题","description":"","frontmatter":{},"headers":[],"relativePath":"git/常见问题.md","filePath":"git/常见问题.md"}'),n={name:"git/常见问题.md"};function l(r,a,h,o,d,g){return e(),s("div",null,[...a[0]||(a[0]=[t("",24)])])}const b=i(n,[["render",l]]);export{c as __pageData,b as default};
