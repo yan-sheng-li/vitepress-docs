@@ -178,6 +178,7 @@ export default defineConfig({
             { text: '整合支付宝沙箱支付', link: '/springboot/整合支付宝沙箱支付' },
             { text: '整合IK分词器', link: '/springboot/整合IK分词器' },
             { text: '整合webhook自动部署', link: '/springboot/整合webhook自动部署' },
+            { text: '集成AI大模型', link: '/springboot/集成AI大模型' },
           ]
         },
         {
