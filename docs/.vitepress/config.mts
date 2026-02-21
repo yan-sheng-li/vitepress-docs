@@ -34,7 +34,8 @@ export default defineConfig({
           { text: 'SpringBoot', link: '/springboot/' },
           { text: 'ElasticSearch', link: '/elastic-search/' },
         ]
-      }
+      },
+      { text: 'Git', link: '/git/' }
     ],
 
     sidebar: {
@@ -206,6 +207,22 @@ export default defineConfig({
             { text: '告别各种奇怪的时间格式', link: '/springboot/告别各种奇怪的时间格式' },
           ]
         },
+      ],
+      '/git/': [
+        {
+          text: 'Git 系列',
+          items: [
+            { text: '简介', link: '/git/' },
+            { text: 'git快速入门', link: '/git/git快速入门' },
+            { text: 'git标签', link: '/git/git标签' },
+            { text: '写有意义的提交记录说明', link: '/git/写有意义的提交记录说明' },
+            { text: '分支改进', link: '/git/分支改进' },
+            { text: '暂存临时栈', link: '/git/暂存临时栈' },
+            { text: '本地初始库与远程库已有库合并', link: '/git/本地初始库与远程库已有库合并' },
+            { text: '通过 GitHub 托管静态文件', link: '/git/通过 GitHub 托管静态文件' },
+            { text: '常见问题', link: '/git/常见问题' },
+          ]
+        }
       ],
     },
 
