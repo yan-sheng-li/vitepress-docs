@@ -31,6 +31,7 @@ export default defineConfig({
       {
         text: '后端',
         items: [
+          { text: 'Java', link: '/Java/' },
           { text: 'SpringBoot', link: '/springboot/' },
           { text: 'ElasticSearch', link: '/elastic-search/' },
         ]
@@ -39,6 +40,21 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/Java/': [
+        {
+          text: 'Java 系列',
+          items: [
+            { text: 'index', link: '/Java/index' },
+            { text: 'Java项目CMD启动指南', link: '/Java/Java项目CMD启动指南' },
+            { text: 'JDBC常用方法封装', link: '/Java/JDBC常用方法封装' },
+            { text: '普通项目打jar', link: '/Java/普通项目打jar' },
+            { text: '时间差计算', link: '/Java/时间差计算' },
+            { text: '实现定时任务', link: '/Java/实现定时任务' },
+            { text: '使用JFileChooser', link: '/Java/使用JFileChooser' },
+            { text: '文字转化图片', link: '/Java/文字转化图片' },
+          ]
+        }
+      ],
       '/vue/': [
         {
           text: 'Vue 系列',
