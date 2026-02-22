@@ -221,6 +221,7 @@ export default defineConfig({
             { text: '本地初始库与远程库已有库合并', link: '/git/本地初始库与远程库已有库合并' },
             { text: '通过 GitHub 托管静态文件', link: '/git/通过 GitHub 托管静态文件' },
             { text: '常见问题', link: '/git/常见问题' },
+            { text: 'gitea自定义issue模板', link: '/git/gitea自定义issue模板' },
           ]
         }
       ],
