@@ -77,7 +77,8 @@ export default defineConfig({
         text: '其他',
         items: [
           { text: 'tool', link: '/tool/' },
-          { text: 'vuepress', link: '/vuepress/' }
+          { text: 'vuepress', link: '/vuepress/' },
+          { text: 'vitepress', link: '/vitepress/' }
         ]
       }
 
@@ -87,6 +88,9 @@ export default defineConfig({
     sidebar: {
       '/Js/': [
         { text: 'Js 系列', items: getSidebar('Js') }
+      ],
+      '/vitepress/': [
+        { text: 'vitepress 系列', items: getSidebar('vitepress') }
       ],
       '/uniapp/': [
         { text: 'uniapp 系列', items: getSidebar('uniapp') }
