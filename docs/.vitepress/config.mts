@@ -47,6 +47,7 @@ export default defineConfig({
           { text: '微信小程序', link: '/微信小程序/' },
           { text: 'CSS', link: '/css/' },
           { text: 'Js', link: '/Js/' },
+          { text: 'uniapp', link: '/uniapp/' }
         ]
       },
       {
@@ -85,6 +86,9 @@ export default defineConfig({
     sidebar: {
       '/Js/': [
         { text: 'Js 系列', items: getSidebar('Js') }
+      ],
+      '/uniapp/': [
+        { text: 'uniapp 系列', items: getSidebar('uniapp') }
       ],
       '/tool/': [
         { text: '工具', items: getSidebar('tool') }
