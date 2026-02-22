@@ -32,6 +32,7 @@ export default defineConfig({
         text: '后端',
         items: [
           { text: 'Java', link: '/Java/' },
+          { text: 'Javaee', link: '/Javaee/' },
           { text: 'SpringBoot', link: '/springboot/' },
           { text: 'ElasticSearch', link: '/elastic-search/' },
         ]
@@ -40,6 +41,27 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/Javaee/': [
+        {
+          text: 'Javaee 系列',
+          items: [
+            { text: 'index', link: '/Javaee/index' },
+            { text: 'C标签库语法', link: '/Javaee/C标签库语法' },
+            { text: '对象属性复制', link: '/Javaee/对象属性复制' },
+            { text: '简易验证码', link: '/Javaee/简易验证码' },
+            { text: '全局过滤器', link: '/Javaee/全局过滤器' },
+            { text: '使用tomcat部署可能遇到的问题', link: '/Javaee/使用tomcat部署可能遇到的问题' },
+            { text: '数据分页实现-案例', link: '/Javaee/数据分页实现-案例' },
+            { text: '页面跳转值传递', link: '/Javaee/页面跳转值传递' },
+            { text: 'Commons-DbUtils库', link: '/Javaee/Commons-DbUtils库' },
+            { text: '基础写法', link: '/Javaee/基础写法' },
+            { text: '密码加密', link: '/Javaee/密码加密' },
+            { text: '实操案例', link: '/Javaee/实操案例' },
+            { text: '数据导入导出', link: '/Javaee/数据导入导出' },
+            { text: '文件上传下载', link: '/Javaee/文件上传下载' },
+          ]
+        }
+      ],
       '/Java/': [
         {
           text: 'Java 系列',
