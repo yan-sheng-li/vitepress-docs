@@ -55,7 +55,9 @@ export default defineConfig({
           { text: 'Java', link: '/Java/' },
           { text: 'Javaee', link: '/Javaee/' },
           { text: 'SpringBoot', link: '/springboot/' },
-          { text: 'Mybatis', link: '/mybatis/' }
+          { text: 'Mybatis', link: '/mybatis/' },
+          { text: 'nodejs', link: '/nodejs/' },
+
         ]
       },
       {
@@ -65,6 +67,7 @@ export default defineConfig({
           { text: 'Linux', link: '/Linux/' },
           { text: 'ElasticSearch', link: '/elastic-search/' },
           { text: 'Kafka', link: '/kafka/' },
+          { text: 'MySQL', link: '/MySQL/' }
 
         ]
       },
@@ -78,6 +81,12 @@ export default defineConfig({
       ],
       '/Linux/': [
         { text: 'Linux 系列', items: getSidebar('Linux') }
+      ],
+      '/nodejs/': [
+        { text: 'nodejs 系列', items: getSidebar('nodejs') }
+      ],
+      '/MySQL/': [
+        { text: 'MySQL 系列', items: getSidebar('MySQL') }
       ],
       '/mybatis/': [
         { text: 'mybatis 系列', items: getSidebar('mybatis') }
