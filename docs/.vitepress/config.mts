@@ -1,4 +1,18 @@
 import { defineConfig } from 'vitepress'
+import { readdirSync } from 'node:fs'
+import { resolve } from 'node:path'
+
+function getSidebar(dir: string) {
+  const fullPath = resolve(process.cwd(), 'docs', dir)
+  const files = readdirSync(fullPath)
+
+  return files
+    .filter(file => file.endsWith('.md') && file !== 'index.md')
+    .map(file => ({
+      text: file.replace('.md', ''),
+      link: `/${dir}/${file.replace('.md', '')}`
+    }))
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -36,12 +50,19 @@ export default defineConfig({
           { text: 'Javaee', link: '/Javaee/' },
           { text: 'SpringBoot', link: '/springboot/' },
           { text: 'ElasticSearch', link: '/elastic-search/' },
+          { text: 'kafka', link: '/kafka/' },
         ]
       },
       { text: 'Git', link: '/git/' }
     ],
 
     sidebar: {
+      '/kafka/': [
+        {
+          text: 'kafka 系列',
+          items: getSidebar('kafka')
+        }
+      ],
       '/Js/': [
         {
           text: 'Js 系列',

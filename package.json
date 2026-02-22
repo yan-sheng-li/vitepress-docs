@@ -9,5 +9,8 @@
     "docs:preview": "vitepress preview docs --port 8080",
     "predeploy": "npm run docs:build",
     "deploy": "gh-pages -d docs/.vitepress/dist"
+  },
+  "dependencies": {
+    "@types/node": "^25.3.0"
   }
 }
