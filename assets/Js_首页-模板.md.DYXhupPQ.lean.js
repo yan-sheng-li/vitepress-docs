@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,aj as h}from"./chunks/framework.VtnL2jmu.js";const d=JSON.parse('{"title":"首页-模板","description":"","frontmatter":{},"headers":[],"relativePath":"Js/首页-模板.md","filePath":"Js/首页-模板.md"}'),k={name:"Js/首页-模板.md"};function t(l,s,p,E,e,g){return n(),a("div",null,[...s[0]||(s[0]=[h("",4)])])}const y=i(k,[["render",t]]);export{d as __pageData,y as default};

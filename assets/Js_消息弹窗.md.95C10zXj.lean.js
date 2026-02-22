@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,aj as t}from"./chunks/framework.VtnL2jmu.js";const d=JSON.parse('{"title":"消息弹窗","description":"","frontmatter":{},"headers":[],"relativePath":"Js/消息弹窗.md","filePath":"Js/消息弹窗.md"}'),h={name:"Js/消息弹窗.md"};function l(k,s,p,E,e,r){return n(),a("div",null,[...s[0]||(s[0]=[t("",7)])])}const y=i(h,[["render",l]]);export{d as __pageData,y as default};

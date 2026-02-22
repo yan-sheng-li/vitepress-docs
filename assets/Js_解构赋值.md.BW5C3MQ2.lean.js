@@ -1,0 +1,1 @@
+import{_ as o,c,o as d,aj as a}from"./chunks/framework.VtnL2jmu.js";const p=JSON.parse('{"title":"解构赋值","description":"","frontmatter":{},"headers":[],"relativePath":"Js/解构赋值.md","filePath":"Js/解构赋值.md"}'),t={name:"Js/解构赋值.md"};function r(l,e,n,s,i,_){return d(),c("div",null,[...e[0]||(e[0]=[a("",7)])])}const g=o(t,[["render",r]]);export{p as __pageData,g as default};
