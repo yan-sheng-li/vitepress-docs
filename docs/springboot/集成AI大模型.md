@@ -242,3 +242,92 @@ const stopGenerate = () => {
 </style>
 ```
 
+## 注意
+> springboot2.x，上面的方式不太兼容，可以用纯请求api的方式
+
+依赖添加
+```xml
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+```
+控制器这样写
+```java
+package com.hospital.controller;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import reactor.core.publisher.Flux;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@Api(tags = "ai对话")
+@RequestMapping("/api/front")
+public class ChatController {
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    // 替换成你的 OpenAI Key 或其他 AI 服务的 Key
+    private final String OPENAI_API_KEY = "sk-56633d8ae";
+
+    // OpenAI Chat API 地址
+    private final String OPENAI_URL = "https://apis.iflow.cn/v1/chat/completions";
+
+    @GetMapping("/chat")
+    @ApiOperation("AI对话")
+    public String chat(@RequestParam(name = "message") String message) {
+
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("model", "glm-4.6");
+
+        // Java 8 兼容写法
+        Map<String, String> userMessage = new HashMap<>();
+        userMessage.put("role", "user");
+        userMessage.put("content", message);
+
+        requestBody.put("messages", java.util.Collections.singletonList(userMessage));
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(OPENAI_API_KEY);
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<Map> response = restTemplate.postForEntity(OPENAI_URL, entity, Map.class);
+
+        Map<String, Object> body = response.getBody();
+        if (body != null && body.get("choices") != null) {
+            // 强制转换成 List
+            List<Map<String, Object>> choices = (List<Map<String, Object>>) body.get("choices");
+            if (!choices.isEmpty()) {
+                Map<String, Object> firstChoice = choices.get(0);
+                Map<String, Object> messageMap = (Map<String, Object>) firstChoice.get("message");
+                if (messageMap != null && messageMap.get("content") != null) {
+                    return messageMap.get("content").toString();
+                }
+            }
+        }
+
+        return "AI 未返回内容";
+    }
+
+    @GetMapping(value = "/chatStream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @ApiOperation("流式聊天")
+    public Flux<String> chatStream(@RequestParam String message) {
+        String content = chat(message); // 返回纯文本
+        // 按行拆分流式返回
+        return Flux.fromArray(content.split("\\n"))
+                .filter(line -> !line.trim().isEmpty()) // 去掉空行
+                .map(line -> line + "\n\n") 
+                .delayElements(Duration.ofMillis(50));  // 模拟延迟
+    }
+}
+```
