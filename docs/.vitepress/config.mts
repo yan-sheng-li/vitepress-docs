@@ -26,6 +26,7 @@ export default defineConfig({
           { text: 'Vue', link: '/vue/' },
           { text: '微信小程序', link: '/微信小程序/' },
           { text: 'CSS', link: '/css/' },
+          { text: 'Js', link: '/Js/' },
         ]
       },
       {
@@ -41,6 +42,45 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/Js/': [
+        {
+          text: 'Js 系列',
+          items: [
+            { text: 'index', link: '/Js/index' },
+            { text: '404页面-模板', link: '/Js/404页面-模板' },
+            { text: 'bootstrap-table插件', link: '/Js/bootstrap-table插件' },
+            { text: 'bs-stepper步进组件库', link: '/Js/bs-stepper步进组件库' },
+            { text: 'Day.js常用方法速查', link: '/Js/Day.js常用方法速查' },
+            { text: 'driverjs页面引导', link: '/Js/driverjs页面引导' },
+            { text: 'Dropzonejs实现文件上传', link: '/Js/Dropzonejs实现文件上传' },
+            { text: 'easy-qrcodejs生成二维码', link: '/Js/easy-qrcodejs生成二维码' },
+            { text: 'Fetch请求封装', link: '/Js/Fetch请求封装' },
+            { text: 'flatpicker时间选择', link: '/Js/flatpicker时间选择' },
+            { text: 'fullcalendar日历组件', link: '/Js/fullcalendar日历组件' },
+            { text: 'FullPagejs图片全面屏网页', link: '/Js/FullPagejs图片全面屏网页' },
+            { text: 'Jodit富文本编辑器', link: '/Js/Jodit富文本编辑器' },
+            { text: 'Leaflet-地图应用', link: '/Js/Leaflet-地图应用' },
+            { text: 'select2下拉选择组件', link: '/Js/select2下拉选择组件' },
+            { text: 'slidejs幻灯片', link: '/Js/slidejs幻灯片' },
+            { text: 'sweetalert2', link: '/Js/sweetalert2' },
+            { text: 'timeagojs时间xxx前', link: '/Js/timeagojs时间xxx前' },
+            { text: 'viewjs点击图片放大预览', link: '/Js/viewjs点击图片放大预览' },
+            { text: '三级地图跳转', link: '/Js/三级地图跳转' },
+            { text: '单html页面-elementUI-案例', link: '/Js/单html页面-elementUI-案例' },
+            { text: '单html页面-vue-案例', link: '/Js/单html页面-vue-案例' },
+            { text: '实现网页弹幕', link: '/Js/实现网页弹幕' },
+            { text: '消息弹窗', link: '/Js/消息弹窗' },
+            { text: '登录页-模板', link: '/Js/登录页-模板' },
+            { text: '首页-模板', link: '/Js/首页-模板' },
+            { text: '记录网页浏览时长', link: '/Js/记录网页浏览时长' },
+            { text: '网页静态表格数据导出', link: '/Js/网页静态表格数据导出' },
+            { text: '文字-转-头像', link: '/Js/文字-转-头像' },
+            { text: '解构赋值', link: '/Js/解构赋值' },
+            { text: '随机头像生成', link: '/Js/随机头像生成' },
+            { text: '页面-组件-自由拖放', link: '/Js/页面-组件-自由拖放' }
+          ]
+        }
+      ],
       '/Javaee/': [
         {
           text: 'Javaee 系列',
