@@ -55,15 +55,17 @@ export default defineConfig({
           { text: 'Java', link: '/Java/' },
           { text: 'Javaee', link: '/Javaee/' },
           { text: 'SpringBoot', link: '/springboot/' },
-          { text: 'ElasticSearch', link: '/elastic-search/' },
-          { text: 'kafka', link: '/kafka/' },
+          { text: 'Mybatis', link: '/mybatis/' }
         ]
       },
       {
         text: '综合',
         items: [
           { text: 'Git', link: '/git/' },
-          { text: 'Linux', link: '/linux/' },
+          { text: 'Linux', link: '/Linux/' },
+          { text: 'ElasticSearch', link: '/elastic-search/' },
+          { text: 'Kafka', link: '/kafka/' },
+
         ]
       },
 
@@ -76,6 +78,9 @@ export default defineConfig({
       ],
       '/Linux/': [
         { text: 'Linux 系列', items: getSidebar('Linux') }
+      ],
+      '/mybatis/': [
+        { text: 'mybatis 系列', items: getSidebar('mybatis') }
       ],
       '/Java/': [
         { text: 'Java 系列', items: getSidebar('Java') }
