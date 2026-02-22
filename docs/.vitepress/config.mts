@@ -59,13 +59,23 @@ export default defineConfig({
           { text: 'kafka', link: '/kafka/' },
         ]
       },
-      { text: 'Git', link: '/git/' }
+      {
+        text: '综合',
+        items: [
+          { text: 'Git', link: '/git/' },
+          { text: 'Linux', link: '/linux/' },
+        ]
+      },
+
     ],
 
     // 自动生成侧边栏
     sidebar: {
       '/Js/': [
         { text: 'Js 系列', items: getSidebar('Js') }
+      ],
+      '/Linux/': [
+        { text: 'Linux 系列', items: getSidebar('Linux') }
       ],
       '/Java/': [
         { text: 'Java 系列', items: getSidebar('Java') }
