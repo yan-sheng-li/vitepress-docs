@@ -57,7 +57,8 @@ export default defineConfig({
           { text: 'SpringBoot', link: '/springboot/' },
           { text: 'Mybatis', link: '/mybatis/' },
           { text: 'nodejs', link: '/nodejs/' },
-
+          { text: 'Python', link: '/Python/' },
+          { text: 'Java swing', link: '/swing/' }
         ]
       },
       {
@@ -71,6 +72,12 @@ export default defineConfig({
 
         ]
       },
+      {
+        text: '其他',
+        items: [
+          { text: 'tool', link: '/tool/' },
+        ]
+      }
 
     ],
 
@@ -78,6 +85,15 @@ export default defineConfig({
     sidebar: {
       '/Js/': [
         { text: 'Js 系列', items: getSidebar('Js') }
+      ],
+      '/tool/': [
+        { text: '工具', items: getSidebar('tool') }
+      ],
+      '/swing/': [
+        { text: 'swing 系列', items: getSidebar('swing') }
+      ],
+      '/Python/': [
+        { text: 'Python 系列', items: getSidebar('Python') }
       ],
       '/Linux/': [
         { text: 'Linux 系列', items: getSidebar('Linux') }
