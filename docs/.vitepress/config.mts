@@ -40,6 +40,7 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: '服务大厅', link: 'https://liyansheng.top/pc/home' },
+      { text: 'AI', link: '/AI/' },
       {
         text: '前端',
         items: [
@@ -88,6 +89,9 @@ export default defineConfig({
     sidebar: {
       '/Js/': [
         { text: 'Js 系列', items: getSidebar('Js') }
+      ],
+      '/AI/': [
+        { text: 'AI系列', items: getSidebar('AI') }
       ],
       '/vitepress/': [
         { text: 'vitepress 系列', items: getSidebar('vitepress') }
