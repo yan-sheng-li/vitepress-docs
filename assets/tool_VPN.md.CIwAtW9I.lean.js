@@ -1,0 +1,1 @@
+import{_ as e,c as r,o as t,aj as l}from"./chunks/framework.VtnL2jmu.js";const c=JSON.parse('{"title":"🚀科学上网","description":"","frontmatter":{},"headers":[],"relativePath":"tool/VPN.md","filePath":"tool/VPN.md"}'),h={name:"tool/VPN.md"};function n(o,a,i,s,f,d){return t(),r("div",null,[...a[0]||(a[0]=[l("",23)])])}const b=e(h,[["render",n]]);export{c as __pageData,b as default};
