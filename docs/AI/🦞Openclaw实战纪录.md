@@ -89,6 +89,18 @@ pnpm add -g openclaw@latest
 
 很简单，直接安装插件即可
 
+1.安装OpenClaw开源社区QQBot插件
+
+openclaw plugins install @tencent-connect/openclaw-qqbot@latest
+
+2.配置绑定当前QQ机器人
+
+openclaw channels add --channel qqbot --token "123:1123"
+
+3.重启本地OpenClaw服务
+
+openclaw gateway restart
+
 👉[看这里](https://q.qq.com/qqbot/openclaw/index.html)
 
 ## 配置
