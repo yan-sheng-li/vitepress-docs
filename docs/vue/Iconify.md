@@ -192,3 +192,18 @@ import { Icon } from '@iconify/vue'
 - `width` / `height` / `style="color:xxx"` 都可以直接控制图标大小和颜色。
 
 
+## 在纯HTML用法
+使用 Iconify 的 JavaScript 库（传统方式）
+这个库会自动查找带有特定类名的元素并替换为 SVG。
+
+在 HTML 的 <head> 中引入 Iconify 库：
+
+```html
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
+```
+在页面中，为要显示图标的元素添加 class="iconify" 属性，并用 data-icon 指定图标：
+```html
+<span class="iconify" data-icon="mdi:home"></span>
+<span class="iconify" data-icon="fa-solid:heart"></span>
+```
