@@ -67,3 +67,19 @@ pnpm add -g @benborla29/mcp-server-mysql
   }
 }
 ```
+
+## gitee
+[参考文档](https://help.gitee.com/ai-productivity/mcp-server#%E5%AE%89%E8%A3%85npx-%E5%90%AF%E5%8A%A8%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%B7%B3%E8%BF%87%E8%AF%A5%E6%AD%A5%E9%AA%A4)
+>它提供了一系列与 Gitee API 交互的工具，使 AI 助手能够管理仓库、问题、拉取请求等。
+```json
+{
+  "mcpServers": {
+    "gitee": {
+      "url": "https://api.gitee.com/mcp",
+      "headers": {
+        "Authorization": "Bearer <your personal access token>"
+      }
+    }
+  }
+}
+```
