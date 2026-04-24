@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,aj as t}from"./chunks/framework.VtnL2jmu.js";const g=JSON.parse('{"title":"MCP服务器","description":"","frontmatter":{},"headers":[],"relativePath":"AI/mcp服务.md","filePath":"AI/mcp服务.md"}'),p={name:"AI/mcp服务.md"};function l(h,s,e,k,r,E){return n(),a("div",null,[...s[0]||(s[0]=[t("",18)])])}const d=i(p,[["render",l]]);export{g as __pageData,d as default};
