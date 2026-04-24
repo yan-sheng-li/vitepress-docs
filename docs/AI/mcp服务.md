@@ -83,3 +83,20 @@ pnpm add -g @benborla29/mcp-server-mysql
   }
 }
 ```
+
+## miniclaw
+[参考文档](https://github.com/yan-sheng-li/MiniClaw/tree/main)
+
+> 给你的 AI 工作伙伴 (AI Copilot) 装上“神经系统”
+
+本地安装（启动快速）
+```json
+        "miniclaw": {
+            "enabled": true,
+            "command": [
+                "node",
+                "G:\\ai\\MiniClaw-main-v2\\dist\\index.js"
+            ],
+            "type": "local"
+        },
+```
