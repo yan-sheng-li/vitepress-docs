@@ -1,7 +1,3 @@
-以下是关于 `git worktree` 的使用笔记与示例，适合日常开发场景参考。
-
----
-
 # Git Worktree 使用笔记
 
 ## 1. 什么是 Git Worktree？
