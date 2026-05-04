@@ -1,4 +1,4 @@
-# bat：插了翅膀的 cat
+# bat插了翅膀的cat
 
 **bat** 的定位是 *A cat clone with wings*（插了翅膀的 cat 复刻版）。
 
