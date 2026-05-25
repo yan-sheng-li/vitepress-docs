@@ -121,7 +121,7 @@ export HTTPS_PROXY=http://127.0.0.1:7890
 ```bash
 HTTP_PROXY=http://127.0.0.1:7890 \
 HTTPS_PROXY=http://127.0.0.1:7890 \
-9router
+9router -l -p 9146
 ```
 
 ------

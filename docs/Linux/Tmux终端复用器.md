@@ -263,3 +263,216 @@ tmux a -t work
 # 6. 结束会话
 tmux kill-session -t work
 ```
+
+## 13. 窗口命名
+
+tmux 里“子窗口”可能有两层概念：
+
+- **window（窗口）**：一个 session 里的标签页
+- **pane（分屏/子窗格）**：窗口里的上下/左右拆分
+
+两者都能命名，但方式不同。
+
+给 **window** 起名：
+
+```bash
+tmux rename-window myapp
+```
+
+快捷键：
+
+```text
+Ctrl+b ,
+```
+
+然后输入名字。
+
+给 **pane（分屏）** 起名（tmux 3.2+）：
+
+```bash
+tmux select-pane -T logs
+```
+
+或者指定 pane：
+
+```bash
+tmux select-pane -t :.1 -T backend
+```
+
+说明：
+
+- `:.1` = 当前窗口的第 1 个 pane
+- `-T` = pane 标题（title）
+
+如果想显示 pane 名称，需要开启 pane 边框状态：
+
+```bash
+tmux set -g pane-border-status top
+```
+
+然后可自定义显示格式：
+
+```bash
+tmux set -g pane-border-format "#{pane_index}: #{pane_title}"
+```
+
+效果类似：
+
+```text
+┌─0: logs────────┐
+│                │
+├─1: backend─────┤
+│                │
+└────────────────┘
+```
+
+## 14. 持久化（WSL / 通用）
+
+### 前置
+
+插件管理器，用于方便地安装和管理其他 tmux 插件。
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+#### 配置文件 (`~/.tmux.conf`)
+
+在你的 WSL 主目录下创建或编辑 `~/.tmux.conf` 文件，加入以下配置：
+
+```bash
+# 1. 使用 tpm 插件管理器
+set -g @plugin 'tmux-plugins/tpm'
+
+# 2. 状态保存与恢复核心插件
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# 3. 自动化插件：定时保存和自动恢复
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# --- 以下是针对 continuum 的配置选项 ---
+# 设置自动保存的间隔（单位：分钟），默认15分钟
+set -g @continuum-save-interval '15'
+
+# 开启自动恢复：tmux 启动时自动加载 last 保存的状态
+set -g @continuum-restore 'on'
+
+# 开启开机自启：确保 WSL 重启后，tmux 服务器能被 continuum 拉起
+# 注意：此选项需配合 WSL 的自启环境使用，效果可能因 WSL 版本而异，但设置无害
+set -g @continuum-boot 'on'
+
+# [可选] 保存面板内的内容，这有助于恢复 vim 等程序的部分状态
+set -g @resurrect-capture-pane-contents 'on'
+
+# 确保 tpm 的配置行在最后
+run -b '~/.tmux/plugins/tpm/tpm'
+```
+
+配置完成后，在 tmux 会话中按下 `prefix + I`（大写的 I，即 Shift + i），tpm 会自动从 GitHub 下载并安装你在配置文件中声明的插件。
+
+### 1. 核心概念
+
+- **tmux-resurrect**：核心插件，负责保存/恢复会话
+- **tmux-continuum**：自动化插件，定时保存 + 开机/启动自动恢复
+- **默认存档**：`last`（`prefix + Ctrl-r` 默认恢复这个）
+
+---
+
+### 2. 日常操作
+
+| 操作     | 快捷键            | 说明                               |
+| -------- | ----------------- | ---------------------------------- |
+| 手动保存 | `prefix + Ctrl-s` | 保存当前会话到 `last`              |
+| 手动恢复 | `prefix + Ctrl-r` | 从 `last` 恢复最近一次保存的状态   |
+| 自动保存 | 每15分钟          | 由 continuum 自动触发，覆盖 `last` |
+| 自动恢复 | 运行 `tmux` 时    | 需要 `@continuum-restore 'on'`     |
+
+---
+
+### 3. 多存档管理（保存/恢复指定名称）
+
+#### 查看所有存档
+```bash
+ls ~/.tmux/resurrect/
+```
+
+#### 保存到指定名称（例如 `work2`）
+```bash
+tmux run-shell 'tmux save-session -t ~/.tmux/resurrect/work2'
+```
+
+#### 从指定名称恢复
+```bash
+tmux run-shell 'tmux load-session -t ~/.tmux/resurrect/work2'
+```
+
+#### 常用存档切换流程
+```bash
+# 1. 保存当前状态到 work
+tmux run-shell 'tmux save-session -t ~/.tmux/resurrect/work'
+
+# 2. 切换到 work2（假设之前已保存）
+tmux run-shell 'tmux load-session -t ~/.tmux/resurrect/work2'
+
+# 3. 或者手动 kill-server 后从 work 恢复
+tmux kill-server
+tmux run-shell 'tmux load-session -t ~/.tmux/resurrect/work'
+```
+
+---
+
+### 4. 测试流程
+
+```bash
+# 1. 手动保存（或等自动保存）
+prefix + Ctrl-s
+
+# 2. 彻底退出 tmux
+tmux kill-server
+
+# 3. 验证已清空
+tmux ls   # 应显示无服务器
+
+# 4. 重新启动并恢复
+tmux      # 自动恢复 last（需开启 continuum-restore）
+# 或手动从指定存档恢复
+tmux run-shell 'tmux load-session -t ~/.tmux/resurrect/work'
+```
+
+---
+
+### 5. 快捷键绑定建议（可选）
+
+在 `~/.tmux.conf` 中添加：
+
+```bash
+# 指定名称保存（prefix + M-s）
+bind M-s command-prompt -p "Save as:" "run-shell 'tmux save-session -t ~/.tmux/resurrect/%%1'"
+
+# 指定名称恢复（prefix + M-r）
+bind M-r command-prompt -p "Restore from:" "run-shell 'tmux load-session -t ~/.tmux/resurrect/%%1'"
+```
+
+重载配置：`tmux source-file ~/.tmux.conf`
+
+---
+
+### 6. 关键路径
+
+| 内容     | 路径                 |
+| -------- | -------------------- |
+| 配置文件 | `~/.tmux.conf`       |
+| 插件目录 | `~/.tmux/plugins/`   |
+| 存档目录 | `~/.tmux/resurrect/` |
+
+---
+
+### 7. 常见问题速查
+
+| 问题                 | 解决                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| 自动恢复无效         | 检查 `@continuum-restore 'on'` 是否配置                      |
+| 程序（如 vim）未恢复 | 添加 `@resurrect-capture-pane-contents 'on'`                 |
+| 恢复后是空白会话     | 确认之前确实保存过，且没有 `tmux kill-server` 后忘记保存     |
+| 想改变自动恢复的目标 | 复制其他存档到 `last`：`cp ~/.tmux/resurrect/work2 ~/.tmux/resurrect/last` |
+
