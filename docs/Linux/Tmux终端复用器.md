@@ -196,6 +196,12 @@ set -g status-fg white
 # 开启窗口活动通知
 setw -g monitor-activity on
 setw -g visual-activity on
+
+# 设置默认 shell 为 zsh
+set -g default-shell /bin/zsh
+
+# 或者使用当前用户的默认 shell
+set -g default-shell $SHELL
 ```
 
 ### 9.3 配置生效方法
