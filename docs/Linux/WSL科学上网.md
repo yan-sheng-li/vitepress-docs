@@ -139,3 +139,35 @@ root@liyansheng:~#### curl https://www.google.com
 ```
 
 ![image-20260424155248013](http://cdn.qiniu.liyansheng.top/img/image-20260424155248013.png)
+
+## 超级整合版🔥🔥
+
+> 创建一个脚本，让 WSL 每次启动都能自动获取并设置代理
+
+1. 在 WSL 的 `~/.bashrc` 或 `~/.zshrc` 文件末尾添加以下内容：
+
+   ```bash
+   # 获取 Windows 的 IP 地址
+   export WIN_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+   
+   # 设置代理端口（替换 7890 为你的实际端口）
+   export PROXY_PORT=7890
+   
+   # 定义代理开关函数
+   proxy_on() {
+       export http_proxy="http://$WIN_IP:$PROXY_PORT"
+       export https_proxy="http://$WIN_IP:$PROXY_PORT"
+       export HTTP_PROXY="http://$WIN_IP:$PROXY_PORT"
+       export HTTPS_PROXY="http://$WIN_IP:$PROXY_PORT"
+       echo "代理已开启: http://$WIN_IP:$PROXY_PORT"
+   }
+   
+   proxy_off() {
+       unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+       echo "代理已关闭"
+   }
+   ```
+
+   
+
+2. 保存后执行 `source ~/.bashrc`（或 `source ~/.zshrc`），之后在 WSL 中只需要输入 `proxy_on` 即可启用代理。
