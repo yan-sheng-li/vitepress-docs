@@ -482,3 +482,41 @@ bind M-r command-prompt -p "Restore from:" "run-shell 'tmux load-session -t ~/.t
 | 恢复后是空白会话     | 确认之前确实保存过，且没有 `tmux kill-server` 后忘记保存     |
 | 想改变自动恢复的目标 | 复制其他存档到 `last`：`cp ~/.tmux/resurrect/work2 ~/.tmux/resurrect/last` |
 
+### 8. tmux 恢复会话时命令前缀都是灰的?
+
+#### 问题
+tmux 恢复会话后，命令行颜色丢失（显示灰色），需要手动输入 `zsh` 才能恢复。
+
+#### 原因
+tmux 恢复会话时启动的是"非登录 Shell"，不会自动加载 `~/.zshrc`，导致颜色配置（PS1）没有被应用。
+
+#### 解决方案
+在 `~/.tmux.conf` 中添加以下两行，强制 tmux 使用"登录 Shell"模式：
+
+```bash
+set -g default-shell /bin/zsh
+set -g default-command "zsh -l"
+```
+
+#### 重新加载配置
+
+**在 tmux 会话内：**
+
+1. 按 `Ctrl + b`
+2. 再按 `:`
+3. 输入 `source-file ~/.tmux.conf` 并回车
+
+**或在终端直接执行：**
+
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+**或重启所有 tmux 会话：**
+```bash
+tmux kill-server   # 注意会关闭所有会话
+```
+
+---
+
+搞定之后，新开的窗口和恢复的会话都会自动带有颜色了 
