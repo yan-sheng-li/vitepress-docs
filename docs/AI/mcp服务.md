@@ -40,7 +40,8 @@ pnpm add -g @benborla29/mcp-server-mysql
         "MYSQL_DB": "",
         "ALLOW_INSERT_OPERATION": "true",
         "ALLOW_UPDATE_OPERATION": "true",
-        "ALLOW_DELETE_OPERATION": "true"
+        "ALLOW_DELETE_OPERATION": "true",
+        "ALLOW_DDL_OPERATION": "true"
       }
     }
   }
@@ -100,3 +101,20 @@ pnpm add -g @benborla29/mcp-server-mysql
             "type": "local"
         },
 ```
+
+## [codegraph](https://github.com/colbymchenry/codegraph)
+
+> 项目代码树，快速分析
+
+```bash
+        "codegraph": {
+            "enabled": true,
+            "command": [
+                "codegraph",
+                "serve",
+                "--mcp"
+            ],
+            "type": "local"
+        },
+```
+

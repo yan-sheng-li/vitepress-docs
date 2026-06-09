@@ -86,6 +86,18 @@ nano -Y python script.py
 include "/usr/share/nano/*.nanorc"
 set tabsize 4
 set tabstospaces
+
+# 鼠标支持
+set mouse
+
+# 显示行号
+set linenumbers
+
+# 显示光标位置
+set constantshow
+
+# 自动缩进
+set autoindent
 ```
 
 ### 5.3 使用 `sudo` 编辑系统文件
