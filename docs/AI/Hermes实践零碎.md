@@ -47,3 +47,8 @@ mcp_servers:
 
 ### [生图-agnes-image]()
 
+
+
+## [分身创建](https://hermes-agent.nousresearch.com/docs/zh-Hans/user-guide/profiles)
+
+[别名参考](https://hermes-agent.nousresearch.com/docs/zh-Hans/reference/profile-commands#hermes-profile-alias)
