@@ -46,3 +46,16 @@
   - 项目级同理（放在 .pi/ 目录下）
 
 AGENTS.md 主要用于**项目/全局的额外指令、规范、安全规则、常用命令**等，它会和默认系统提示词 + SYSTEM/APPEND_SYSTEM.md 一起组成完整的上下文。
+
+
+
+## 周边
+
+### [pi-web](https://github.com/yan-sheng-li/pi-web)
+
+用于 pi 编码代理的本地浏览器界面。
+
+
+
+### [pi-codegraph-fix——代码活地图](https://github.com/yan-sheng-li/pi-codegraph-fix)
+
