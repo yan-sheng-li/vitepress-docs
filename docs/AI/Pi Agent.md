@@ -51,11 +51,36 @@ AGENTS.md 主要用于**项目/全局的额外指令、规范、安全规则、�
 
 ## 周边
 
+更多插件包这里找：https://pi.dev/packages
+
 ### [pi-web](https://github.com/yan-sheng-li/pi-web)
 
 用于 pi 编码代理的本地浏览器界面。
 
-
-
 ### [pi-codegraph-fix——代码活地图](https://github.com/yan-sheng-li/pi-codegraph-fix)
 
+
+
+## [pi-agent-extensions](https://github.com/jayshah5696/pi-agent-extensions)
+
+
+
+## [pi-plan-mode](https://pi.dev/packages/@narumitw/pi-plan-mode?name=pi-plan-mode)
+
+pi install npm:@narumitw/pi-plan-mode
+
+## [pi-web-access](https://pi.dev/packages/pi-web-access)
+
+ pi install npm:pi-web-access
+
+## [pi-statusline](https://pi.dev/packages/@narumitw/pi-statusline?name=pi-statusline)
+
+pi install npm:@narumitw/pi-statusline
+
+## [pi-subagents](https://pi.dev/packages/pi-subagents)
+
+pi install npm:pi-subagents
+
+## [pi-9router](https://pi.dev/packages/@qmahyar/pi-9router?name=9rou)
+
+pi install npm:@qmahyar/pi-9router
