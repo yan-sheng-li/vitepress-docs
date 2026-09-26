@@ -84,3 +84,7 @@ pi install npm:pi-subagents
 ## [pi-9router](https://pi.dev/packages/@qmahyar/pi-9router?name=9rou)
 
 pi install npm:@qmahyar/pi-9router
+
+## 自定义模型供应商-拉取模型列表
+
+pi install npm:@fanchaozz/provider-manager
