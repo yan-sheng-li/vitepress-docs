@@ -1,3 +1,5 @@
+
+
 # 前端项目 npm 自动发布流水线
 
 > 基于 [pi-codegraph-fix](https://github.com/yan-sheng-li/pi-codegraph-fix) 的实际配置过程整理，适用于任何前端/Node.js npm 包的 CI/CD 发布。
@@ -30,7 +32,7 @@ git push origin main --tags
   "version": "1.0.0",
   "files": ["extensions/", "README.md"],  // 控制发布内容，不发布 dev 文件
   "publishConfig": { "registry": "https://registry.npmjs.org/" },  // 强制官方源
-  "repository": { "type": "git", "url": "git+https://github.com/<owner>/<repo>.git" },
+  "repository": { "type": "git", "url": "git+https://github.com/{owner}/{repo}.git" },
   "scripts": {
     "release:patch": "npm version patch && git push origin main --tags",
     "release:minor": "npm version minor && git push origin main --tags",
@@ -41,12 +43,12 @@ git push origin main --tags
 
 ### 注意点
 
-| 问题 | 说明 |
-|---|---|
+| 问题                  | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ |
 | `repository.url` 格式 | 应写 `git+https://...git`，否则 npm publish 时会警告并自动规范化 |
-| `files` 字段 | 不写则默认 publish 全部文件；写了只发布列出的文件/目录 |
-| scoped 包 | `@scope/pkg` 在 npm 上发布必须加 `--access public` |
-| peerDependencies | 若包是 pi/Webpack/Vite 等插件，声明 `peerDependencies` 避免重复安装 |
+| `files` 字段          | 不写则默认 publish 全部文件；写了只发布列出的文件/目录       |
+| scoped 包             | `@scope/pkg` 在 npm 上发布必须加 `--access public`           |
+| peerDependencies      | 若包是 pi/Webpack/Vite 等插件，声明 `peerDependencies` 避免重复安装 |
 
 ### 版本发布脚本
 
@@ -108,13 +110,13 @@ jobs:
 
 ### 关键设计
 
-| 设计点 | 说明 |
-|---|---|
-| tag 触发 | 只响应 `v*` 格式的 tag，避免 main 上的普通 push 触发 |
-| 版本校验 | 防止 tag 与 package.json 版本不一致时发错包 |
-| `permissions: contents: read` | 最小权限，不需要写权限 |
-| `registry-url` | 绕开本地 CNPM 镜像，确保登录官方源 |
-| `--access public` | scoped 包必须加，否则发布失败 |
+| 设计点                        | 说明                                                 |
+| ----------------------------- | ---------------------------------------------------- |
+| tag 触发                      | 只响应 `v*` 格式的 tag，避免 main 上的普通 push 触发 |
+| 版本校验                      | 防止 tag 与 package.json 版本不一致时发错包          |
+| `permissions: contents: read` | 最小权限，不需要写权限                               |
+| `registry-url`                | 绕开本地 CNPM 镜像，确保登录官方源                   |
+| `--access public`             | scoped 包必须加，否则发布失败                        |
 
 ---
 
@@ -122,7 +124,7 @@ jobs:
 
 ### 生成 Automation Token
 
-1. 打开 https://www.npmjs.com/settings/<用户名>/tokens
+1. 打开 `https://www.npmjs.com/settings/{用户名}/tokens`
 2. **Generate New Token** → 类型选 **Automation**
 3. 复制 token
 
@@ -130,42 +132,42 @@ jobs:
 
 ### 配置 GitHub Secret
 
-1. 打开 https://github.com/<owner>/<repo>/settings/secrets/actions
+1. 打开 `https://github.com/{owner}/{repo}/settings/secrets/actions`
 2. **New repository secret**
    - Name: `NPM_TOKEN`
    - Secret: 上一步的 Automation token
 3. 选 **Repository secrets**（不要选 Environment secrets）
 
-> ⚠️ Token 永远不提交到仓库。只存在 GitHub Secrets 加密存储里，workflow 运行时通过 `${{ secrets.NPM_TOKEN }}` 临时注入。
+> ⚠️ Token 永远不提交到仓库。只存在 GitHub Secrets 加密存储里，workflow 运行时通过 `$&#123;&#123; secrets.NPM_TOKEN &#125;&#125;` 临时注入。
 
 ---
 
 ## 四、分支规范
 
-| 建议 | 说明 |
-|---|---|
-| 默认分支 | `main`（单一可信源） |
-| 开发模式 | 直接提交到 main，不用 feature 分支 |
+| 建议         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| 默认分支     | `main`（单一可信源）                                         |
+| 开发模式     | 直接提交到 main，不用 feature 分支                           |
 | 默认分支改名 | `git branch -m master main` → 推送 → GitHub 设置里改默认分支 → 删旧 master |
 
 ---
 
 ## 五、常见问题排障
 
-| 症状 | 原因 | 处理 |
-|---|---|---|
-| `EOTP ... one-time password` | token 不是 Automation 类型 | 重新生成 Automation token 并更新 secret |
-| `E404 Not Found` | scoped 包未加 `--access public` | workflow 里 `npm publish --access public` |
-| `repository.url was normalized` 警告 | URL 格式不规范 | 本地跑 `npm pkg fix` 后提交 |
-| `Tag does not match package.json` | tag 和版本不一致 | 重新 `npm version <level>` 再 push |
-| 发布失败但无 token 错误 | 本地 CNPM 源导致登录状态混乱 | workflow 里强制 `registry-url: https://registry.npmjs.org/` |
+| 症状                                 | 原因                            | 处理                                                        |
+| ------------------------------------ | ------------------------------- | ----------------------------------------------------------- |
+| `EOTP ... one-time password`         | token 不是 Automation 类型      | 重新生成 Automation token 并更新 secret                     |
+| `E404 Not Found`                     | scoped 包未加 `--access public` | workflow 里 `npm publish --access public`                   |
+| `repository.url was normalized` 警告 | URL 格式不规范                  | 本地跑 `npm pkg fix` 后提交                                 |
+| `Tag does not match package.json`    | tag 和版本不一致                | 重新 `npm version <level>` 再 push                          |
+| 发布失败但无 token 错误              | 本地 CNPM 源导致登录状态混乱    | workflow 里强制 `registry-url: https://registry.npmjs.org/` |
 
 ---
 
 ## 六、验证发布成功
 
 ```bash
-npm view <包名> version
+npm view {包名} version
 ```
 
 输出应为刚发布的版本号。Action 运行时间约 1-2 分钟。
